@@ -10,13 +10,13 @@ $( document ).ready(function() {
 	MSG_ACCUEIL = "De par votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et vous pouvez retirer votre badge d'accès à l'accueil de la bibliothèque.";
 	MSG_INTRANET = "Vous devez vous inscrire à l'Humathèque Condorcet en passant par l'intranet de votre établissement. Une fois cela fait, vous pourrez retirer votre badge d'accès à l'accueil de l'Humathèque Condorcet.";
   MSG_CERTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque en vous munissant d'un certificat d'étude et de vos identifiants d'établissement.";
-  MSG_JUSTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque en vous munissant d'un justificatif.";
-  MSG_CONTACT = "Veuillez nous contacter à services.ged@campus-condorcet.fr pour précisez votre demande d'accès.";
+  MSG_JUSTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque en vous munissant d'un justificatif et de vos identifiants d'établissement.";
+  MSG_CONTACT = "Veuillez nous contacter à services.ged@campus-condorcet.fr pour préciser votre demande d'accès.";
   MSG_ARCHIVES = "L'accès est possible : vous devez prendre rendez-vous à archives.ged@campus-condorcet.fr";
   MSG_VISITEUR = "L'accès est possible : présentez-vous à l'accueil de l'Humathèque avec un justificatif de recherche pour obtenir un accès visiteur.";
   MSG_BADGE_CC = "De par votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et votre badge Campus Condorcet vous sert de badge d'accès à la bibliothèque.";
 	MSG_REFERENT = "Vous devez demander votre inscription à votre unité ou à votre référent laboratoire. Votre badge sera ensuite disponible au PC de Sécurité du Campus Condorcet. Il vous permettra d'accéder à l'Humathèque Condorcet.";
-	MSG_ESPACE = "Vous pouvez accéder à l'Open Space, salle de travail située au rez-de-chaussée de l'Humathèque et ouverte de 08 h 00 à 19 h 00 du lundi au vendredi.";
+	MSG_ESPACE = "Vous pouvez accéder à l'Open Space, salle de travail située au rez-de-chaussée de l'Humathèque et ouverte de 08 h 00 à 20 h 00 du lundi au vendredi.";
 });
 
 function hide_all(){
@@ -80,6 +80,7 @@ $("#resident").change(function(){
 
 $("#etablissement_resident").change(function() {
 	mon_etablissement_resident = $("#etablissement_resident").val();
+	$("#divbadge").hide();
 	setConclusion("", "hide");
 	switch(mon_etablissement_resident){
 	  case "NIL":
@@ -88,16 +89,21 @@ $("#etablissement_resident").change(function() {
 		case "P1":
 			setConclusion(MSG_ACCUEIL, "show");
 	  	break;
+		case "EHESS":
+		case "EPHE":
+		case "INED":
+		case "FMSH":
+			$("#divbadge").show();
+      break;
 		case "CNRS":
 		case "ENC":
 		case "P3":
 		case "P8":
 		case "P10":
 		case "P13":
-		case "EHESS":
-		case "EPHE":
-		case "INED":
-		case "FMSH":
+			setConclusion(MSG_JUSTIF, "show");
+	  	break;
+		case "AUTFR":
 			setConclusion(MSG_JUSTIF, "show");
 	  	break;
 		case "AUT":
@@ -217,14 +223,14 @@ $("#acces").change(function () {
 			break;
 		case "ESP":
 			setConclusion(MSG_ESPACE, "show");
-			$("#conclusion").wrapInner("<a href='https://ged.campus-condorcet.fr/fr/pour-tous/lopen-sapce'>Plus d'informations.</a>");
+			$("#conclusion").append(" <a href='https://portail.campus-condorcet.fr/fr/pour-tous/lopen-sapce'>Plus d'informations.</a>");
 			break;
 		case "NIL":
 			setConclusion("", "hide");
 	  default:
 			break;
 	}
-})
+});
 
 // Détermination de la consigne à donner au lecteur potentiel
 function setConclusion(value, status) {

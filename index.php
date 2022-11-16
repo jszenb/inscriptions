@@ -13,8 +13,8 @@ else {
 }
 include("k_integration.php");    
 connecteurMgr::lireTemplate("haut");
-// Fin - Template haut connecteur K-Php
 */
+// Fin - Template haut connecteur K-Php
 ?>
 <p>Pour consulter sur place et/ou pour emprunter des documents, une inscription est nécessaire. 
 <p>Vous pouvez déterminer vos modalités d'inscription au Grand équipement documentaire en utilisant le formulaire ci-dessous.
@@ -99,7 +99,8 @@ connecteurMgr::lireTemplate("haut");
           <option value="P8">Université Paris 8 
           <option value="P10">Université Paris 10 Paris Nanterre
           <option value="P13">Université Paris 13 Sorbonne Paris Nord
-          <option value="AUT">Autre établissement français ou étranger
+          <option value="AUTFR">Autre établissement français
+          <option value="AUT">Autre cas
         </select>
   </div>
   <div id="divbadge">
@@ -119,6 +120,6 @@ connecteurMgr::lireTemplate("haut");
 
 <?php
 // Connecteur bas
-connecteurMgr::lireTemplate("bas");
+//connecteurMgr::lireTemplate("bas");
 // Fin - Connecteur bas
 ?>
