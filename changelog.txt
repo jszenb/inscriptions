@@ -1,0 +1,5 @@
+V6.0.00 :
+Adaptation du connecteur pour la V6 :
+- passage en UTF-8
+- modification des paths
+- corrections de micro-anomalies
