@@ -1,5 +1,4 @@
 <?php
-/*
 // Template haut connecteur K-Php
 session_start();
 setlocale (LC_ALL, "fr");
@@ -13,7 +12,6 @@ else {
 }
 include("k_integration.php");    
 connecteurMgr::lireTemplate("haut");
-*/
 // Fin - Template haut connecteur K-Php
 ?>
 <p>Pour consulter sur place et/ou pour emprunter des documents, une inscription est nécessaire. 
@@ -120,6 +118,6 @@ connecteurMgr::lireTemplate("haut");
 
 <?php
 // Connecteur bas
-//connecteurMgr::lireTemplate("bas");
+connecteurMgr::lireTemplate("bas");
 // Fin - Connecteur bas
 ?>

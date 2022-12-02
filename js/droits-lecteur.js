@@ -11,8 +11,8 @@ $( document ).ready(function() {
 	MSG_INTRANET = "Vous devez vous inscrire à l'Humathèque Condorcet en passant par l'intranet de votre établissement. Une fois cela fait, vous pourrez retirer votre badge d'accès à l'accueil de l'Humathèque Condorcet.";
   MSG_CERTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque en vous munissant d'un certificat d'étude et de vos identifiants d'établissement.";
   MSG_JUSTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque en vous munissant d'un justificatif et de vos identifiants d'établissement.";
-  MSG_CONTACT = "Veuillez nous contacter à services.ged@campus-condorcet.fr pour préciser votre demande d'accès.";
-  MSG_ARCHIVES = "L'accès est possible : vous devez prendre rendez-vous à archives.ged@campus-condorcet.fr";
+  MSG_CONTACT = "Veuillez nous contacter pour préciser votre demande d'accès.";
+  MSG_ARCHIVES = "L'accès est possible : vous devez nous contacter pour prendre un rendez-vous pour consulter les archives.";
   MSG_VISITEUR = "L'accès est possible : présentez-vous à l'accueil de l'Humathèque avec un justificatif de recherche pour obtenir un accès visiteur.";
   MSG_BADGE_CC = "De par votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et votre badge Campus Condorcet vous sert de badge d'accès à la bibliothèque.";
 	MSG_REFERENT = "Vous devez demander votre inscription à votre unité ou à votre référent laboratoire. Votre badge sera ensuite disponible au PC de Sécurité du Campus Condorcet. Il vous permettra d'accéder à l'Humathèque Condorcet.";
@@ -64,6 +64,7 @@ $("#categorie").change(function () {
 $("#resident").change(function(){
 	mon_resident = $("#resident").val();
 	setConclusion("", "hide");
+	$("#badge").val("NIL");
 	switch(mon_resident){
 	  case "OUI":
 			$("#divetablissement_resident").hide();
@@ -81,6 +82,7 @@ $("#resident").change(function(){
 $("#etablissement_resident").change(function() {
 	mon_etablissement_resident = $("#etablissement_resident").val();
 	$("#divbadge").hide();
+	$("#badge").val("NIL");
 	setConclusion("", "hide");
 	switch(mon_etablissement_resident){
 	  case "NIL":
@@ -235,6 +237,8 @@ $("#acces").change(function () {
 // Détermination de la consigne à donner au lecteur potentiel
 function setConclusion(value, status) {
   $("#conclusion").text(value);
+	if ( (value == MSG_CONTACT) || (value == MSG_ARCHIVES) )
+		$("#conclusion").append(" Vous trouverez <a href='https://portail-preprod.humatheque-condorcet.fr/fr/contacts'>ici toutes les informations pour nous contacter</a>");
 	if (status == "show")
     $("#divconclusion").show();
 	else
