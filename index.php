@@ -15,7 +15,7 @@ connecteurMgr::lireTemplate("haut");
 // Fin - Template haut connecteur K-Php
 ?>
 <p>Pour consulter sur place et/ou pour emprunter des documents, une inscription est nécessaire. 
-<p>Vous pouvez déterminer vos modalités d'inscription au Grand équipement documentaire en utilisant le formulaire ci-dessous.
+<p>Vous pouvez déterminer vos modalités d'inscription à l'Humathèque Condorcet en utilisant le formulaire ci-dessous.
 
 <form action="">
   <div id="divcategorie">
@@ -104,6 +104,7 @@ connecteurMgr::lireTemplate("haut");
   <div id="divbadge">
     <p>Disposez-vous d'un badge Campus Condorcet ?
        <select id="badge">
+           <option value="NIL">
            <option value="OUI">Oui
            <option value="NON">Non
        </select>

@@ -28,7 +28,7 @@ include("k_integration.php");
         <br>
         <div class="container">
             <p>Pour consulter sur place et/ou pour emprunter des documents, une inscription est nécessaire. 
-            <p>Vous pouvez déterminer vos modalités d'inscription au Grand équipement documentaire en utilisant le formulaire ci-dessous.
+            <p>Vous pouvez déterminer vos modalités d'inscription à l'Humathèque Condorcet en utilisant le formulaire ci-dessous.
     
             <form action="">
                   <div id="divcategorie">
