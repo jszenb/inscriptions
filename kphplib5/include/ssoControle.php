@@ -276,6 +276,7 @@ class connecteurMgr
 		$cUrl = curl_init();
 		curl_setopt($cUrl, CURLOPT_URL, $sUrl);
 		curl_setopt($cUrl, CURLOPT_RETURNTRANSFER, 1);
+		#curl_setopt($cUrl, CURLOPT_FOLLOWLOCATION, 1);
 
 		echo curl_exec($cUrl);
 		curl_close($cUrl);

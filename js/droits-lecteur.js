@@ -8,15 +8,16 @@ $( document ).ready(function() {
 
 	// Constantes utiles pour la suite
 	MSG_ACCUEIL = "De par votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et vous pouvez retirer votre badge d'accès à l'accueil de la bibliothèque.";
-	MSG_INTRANET = "Vous devez vous inscrire à l'Humathèque Condorcet en passant par l'intranet de votre établissement. Une fois cela fait, vous pourrez retirer votre badge d'accès à l'accueil de l'Humathèque Condorcet.";
-  MSG_CERTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque en vous munissant d'un certificat d'étude et de vos identifiants d'établissement.";
-  MSG_JUSTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque en vous munissant d'un justificatif et de vos identifiants d'établissement.";
-  MSG_CONTACT = "Veuillez nous contacter pour préciser votre demande d'accès.";
-  MSG_ARCHIVES = "L'accès est possible : vous devez nous contacter pour prendre un rendez-vous pour consulter les archives.";
-  MSG_VISITEUR = "L'accès est possible : présentez-vous à l'accueil de l'Humathèque avec un justificatif de recherche pour obtenir un accès visiteur.";
-  MSG_BADGE_CC = "De par votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et votre badge Campus Condorcet vous sert de badge d'accès à la bibliothèque.";
-	MSG_REFERENT = "Vous devez demander votre inscription à votre unité ou à votre référent laboratoire. Votre badge sera ensuite disponible au PC de Sécurité du Campus Condorcet. Il vous permettra d'accéder à l'Humathèque Condorcet.";
+  	MSG_ARCHIVES = "L'accès est possible : vous devez nous contacter pour prendre un rendez-vous pour consulter les archives.";
+  	MSG_BADGE_CC = "De par votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et votre badge Campus Condorcet vous sert de badge d'accès à la bibliothèque.";
+	MSG_CERTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque en vous munissant d'un certificat d'étude et de vos identifiants d'établissement.";
+  	MSG_CONTACT = "Veuillez nous contacter pour préciser votre demande d'accès.";
 	MSG_ESPACE = "Vous pouvez accéder à l'Open Space, salle de travail située au rez-de-chaussée de l'Humathèque et ouverte de 08 h 00 à 20 h 00 du lundi au vendredi.";
+	MSG_ETRANGER = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque et en vous munissant d'une carte d'étudiant ou de votre carte professionnelle.";
+	MSG_INTRANET = "Vous devez vous inscrire à l'Humathèque Condorcet en passant par l'intranet de votre établissement. Une fois cela fait, vous pourrez retirer votre badge d'accès à l'accueil de l'Humathèque Condorcet.";
+  	MSG_JUSTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque en vous munissant d'un justificatif et de vos identifiants d'établissement.";
+	MSG_REFERENT = "Vous devez demander votre inscription à votre unité ou à votre référent laboratoire. Votre badge sera ensuite disponible au PC de Sécurité du Campus Condorcet. Il vous permettra d'accéder à l'Humathèque Condorcet.";
+  	MSG_VISITEUR = "Vous pouvez faire une demande d’accès sur justificatif de recherche";
 });
 
 function hide_all(){
@@ -41,22 +42,22 @@ function hide_all(){
 // Gestion de la catégorie du lecteur : chercheur, enseignant, doctorant, etc.
 $("#categorie").change(function () { 
 	// On réinitialise tout
-  hide_all();   
+ 	hide_all();   
 	ma_categorie = $("#categorie").val();
 	switch(ma_categorie){
-	  case "AUTRES-PUBLICS":
+		case "AUTRES-PUBLICS":
 			// Réinitialisation de la select box
 			$("#acces").val("NIL");
-		  $("#divacces").show();
+			$("#divacces").show();
 			break;
 		case "NIL":
-		  hide_all();   
+			hide_all();   
 			break;
 		case "MASTER":
-      $("#divetablissement_master").show();
+      			$("#divetablissement_master").show();
 			break;
 		default: // tous les autres cas : doctorants, chercheurs, etc.
-      $("#divresident").show();
+      			$("#divresident").show();
 			break;
 	}
 });
@@ -66,16 +67,16 @@ $("#resident").change(function(){
 	setConclusion("", "hide");
 	$("#badge").val("NIL");
 	switch(mon_resident){
-	  case "OUI":
+		case "OUI":
 			$("#divetablissement_resident").hide();
 			$("#divbadge").show();
 			break;
-	  case "NON":
-      $("#divetablissement_resident").show();
+		case "NON":
+      			$("#divetablissement_resident").show();
 			$("#divbadge").hide();
 			break;
-	  default:
-	    hide_all();
+	  	default:
+	    		hide_all();
 	}
 });
 
@@ -85,18 +86,19 @@ $("#etablissement_resident").change(function() {
 	$("#badge").val("NIL");
 	setConclusion("", "hide");
 	switch(mon_etablissement_resident){
-	  case "NIL":
+		case "NIL":
 			setConclusion("", "hide");
-	  	break;
+	  		break;
 		case "P1":
-			setConclusion(MSG_ACCUEIL, "show");
-	  	break;
+			//setConclusion(MSG_ACCUEIL, "show");
+			setConclusion(MSG_INTRANET, "show");
+	  		break;
 		case "EHESS":
 		case "EPHE":
 		case "INED":
 		case "FMSH":
 			$("#divbadge").show();
-      break;
+      			break;
 		case "CNRS":
 		case "ENC":
 		case "P3":
@@ -104,15 +106,17 @@ $("#etablissement_resident").change(function() {
 		case "P10":
 		case "P13":
 			setConclusion(MSG_JUSTIF, "show");
-	  	break;
+	  		break;
 		case "AUTFR":
-			setConclusion(MSG_JUSTIF, "show");
-	  	break;
+			//setConclusion(MSG_JUSTIF, "show");
+			setConclusion(MSG_ETRANGER, "show");
+	  		break;
 		case "AUT":
-			setConclusion(MSG_CONTACT, "show");
-	  	break;
+			//setConclusion(MSG_CONTACT, "show");
+			setConclusion(MSG_ETRANGER, "show");
+	  		break;
 		default:
-		  hide_all();
+			hide_all();
 	}
 });
 
@@ -126,7 +130,7 @@ $("#badge").change(function(){
 			setConclusion(MSG_REFERENT, "show");
 			break;
 	  default:
-	    hide_all();
+	    		hide_all();
 	}
 });
 
@@ -138,17 +142,17 @@ $("#etablissement_master").change(function(){
 	$("#iheal").val("NIL");
 	setConclusion("", "hide");
 	switch(mon_etablissement_master){
-	  case "NIL":
+	  	case "NIL":
 			setConclusion("", "hide");
-	  	break;
-	  case "EHESS":
+	  		break;
+	  	case "EHESS":
 			setConclusion(MSG_ACCUEIL, "show");
-	  	break;
-	  case "EPHE":
+	  		break;
+	  	case "EPHE":
 			setConclusion(MSG_INTRANET, "show");
-	  	break;
-	  case "NIL":
-	    hide_all();
+	  		break;
+	  	case "NIL":
+	    		hide_all();
 			break;
 		case "P1":
 			$("#divufr").show();
@@ -162,9 +166,10 @@ $("#etablissement_master").change(function(){
 		case "AUTESR": // Voir ENC
 		case "ENC":
 			setConclusion(MSG_CERTIF, "show");
-	  	break;
+	  		break;
 		case "AUT": 
-			setConclusion(MSG_CONTACT, "show");
+			//setConclusion(MSG_CONTACT, "show");
+			setConclusion(MSG_ETRANGER, "show");
 			break;
 	  default:
 	    hide_all();
@@ -175,20 +180,20 @@ $("#ufr").change(function() {
 	setConclusion("", "hide");
 	mon_ufr = $("#ufr").val();
 	switch(mon_ufr){
-	  case "NIL":
+	  	case "NIL":
 			setConclusion("", "hide");
-	  	break;
-	  case "HIS": // Voir IDU
-	  case "GEO": // Voir IDU
-	  case "GEN": // Voir IDU
-	  case "IDU":
+	  		break;
+	  	case "HIS": // Voir IDU
+	  	case "GEO": // Voir IDU
+	  	case "GEN": // Voir IDU
+	  	case "IDU":
 			setConclusion(MSG_ACCUEIL, "show");
-	  	break;
-	  case "AUT":
+	  		break;
+	  	case "AUT":
 			setConclusion(MSG_INTRANET, "show");
-	  	break;
-	  default:
-	    hide_all();
+	  		break;
+	  	default:
+	    		hide_all();
 	}
 });
 
@@ -197,16 +202,16 @@ $("#iheal").change(function() {
 	mon_iheal = $("#iheal").val();
 	switch(mon_iheal){
 	  case "NIL":
-			setConclusion("", "hide");
+		setConclusion("", "hide");
 	  	break;
 	  case "OUI":
-			setConclusion(MSG_BADGE_CC, "show");
+		setConclusion(MSG_BADGE_CC, "show");
 	  	break;
 	  case "NON":
-			setConclusion(MSG_CERTIF, "show");
+		setConclusion(MSG_CERTIF, "show");
 	  	break;
 	  default:
-	    hide_all();
+	    	hide_all();
 	}
 });
 // Le lecteur potentiel n'est pas d'une catégorie académique : que veut-il faire au GED ?
@@ -214,33 +219,45 @@ $("#acces").change(function () {
 	setConclusion("", "hide");
 	mon_acces = $("#acces").val();
 	switch(mon_acces){
-	  case "ARC":
+		case "ARC":
 			setConclusion(MSG_ARCHIVES, "show");
-	  	break;
-	  case "DOC":
+	  		break;
+	  	case "DOC":
 			setConclusion(MSG_VISITEUR, "show");
-	  	break;
+	  		break;
 		case "AUT":
 			setConclusion(MSG_CONTACT, "show");
 			break;
 		case "ESP":
 			setConclusion(MSG_ESPACE, "show");
-			$("#conclusion").append(" <a href='https://portail.campus-condorcet.fr/fr/pour-tous/lopen-sapce'>Plus d'informations.</a>");
+			$("#conclusion").append(" <a href='https://www.humatheque-condorcet.fr/fr/pour-tous/lopen-sapce'>Plus d'informations.</a>");
 			break;
 		case "NIL":
 			setConclusion("", "hide");
-	  default:
+	  	default:
 			break;
 	}
 });
 
 // Détermination de la consigne à donner au lecteur potentiel
 function setConclusion(value, status) {
-  $("#conclusion").text(value);
-	if ( (value == MSG_CONTACT) || (value == MSG_ARCHIVES) )
-		$("#conclusion").append(" Vous trouverez <a href='https://portail-preprod.humatheque-condorcet.fr/fr/contacts'>ici toutes les informations pour nous contacter</a>");
+  	$("#conclusion").text(value);
+	switch(value){
+	 case MSG_CONTACT: 
+		$("#conclusion").append(" Vous trouverez <a href='https://www.humatheque-condorcet.fr/fr/contacts'>ici toutes les informations pour nous contacter</a>");
+		break;
+	case MSG_ARCHIVES:
+		$("#conclusion").append(" Vous trouverez <a href='https://www.humatheque-condorcet.fr/fr/collections-et-archives/archives/contacter-le-service-des-archives'>ici toutes les informations pour nous contacter</a>");
+		break;
+	case MSG_VISITEUR:
+		$("#conclusion").append(" <a href='https://www.humatheque-condorcet.fr/fr/pour-le-quotidien/sinscrire/inscription-sur-justification-de-recherches'>en remplissant le formulaire suivant</a>");
+		break;
+	default:
+		break;
+	}
+
 	if (status == "show")
-    $("#divconclusion").show();
+    		$("#divconclusion").show();
 	else
-    $("#divconclusion").hide();
+    		$("#divconclusion").hide();
 };
