@@ -7,17 +7,17 @@ $( document ).ready(function() {
 	hide_all();
 
 	// Constantes utiles pour la suite
-	MSG_ACCUEIL = "De par votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et vous pouvez retirer votre badge d'accès à l'accueil de la bibliothèque.";
+	MSG_ACCUEIL = "De par votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et vous pouvez retirer votre badge d'accès à <b>l'accueil de la bibliothèque.</b>";
   	MSG_ARCHIVES = "L'accès est possible : vous devez nous contacter pour prendre un rendez-vous pour consulter les archives.";
   	MSG_BADGE_CC = "De par votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et votre badge Campus Condorcet vous sert de badge d'accès à la bibliothèque.";
-	MSG_CERTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque en vous munissant d'un certificat d'étude et de vos identifiants d'établissement.";
+	MSG_CERTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à <b>l'accueil de la bibliothèque</b> en vous munissant d'un <b>certificat d'étude et de vos identifiants d'établissement.</b>";
   	MSG_CONTACT = "Veuillez nous contacter pour préciser votre demande d'accès.";
-	MSG_ESPACE = "Vous pouvez accéder à l'Open Space, salle de travail située au rez-de-chaussée de l'Humathèque et ouverte de 08 h 00 à 20 h 00 du lundi au vendredi.";
-	MSG_ETRANGER = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque et en vous munissant d'une carte d'étudiant ou de votre carte professionnelle.";
-	MSG_INTRANET = "Vous devez vous inscrire à l'Humathèque Condorcet en passant par l'intranet de votre établissement. Une fois cela fait, vous pourrez retirer votre badge d'accès à l'accueil de l'Humathèque Condorcet.";
-  	MSG_JUSTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à l'accueil de la bibliothèque en vous munissant d'un justificatif et de vos identifiants d'établissement.";
-	MSG_REFERENT = "Vous devez demander votre inscription à votre unité ou à votre référent laboratoire. Votre badge sera ensuite disponible au PC de Sécurité du Campus Condorcet. Il vous permettra d'accéder à l'Humathèque Condorcet.";
-  	MSG_VISITEUR = "Vous pouvez faire une demande d’accès sur justificatif de recherche";
+	MSG_ESPACE = "Vous pouvez accéder à <b>l'Open Space</b>, salle de travail située au rez-de-chaussée de l'Humathèque et ouverte de 08 h 00 à 20 h 00 du lundi au vendredi.";
+	MSG_ETRANGER = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à <b>l'accueil de la bibliothèque</> et en vous munissant <b>d'une carte d'étudiant ou de votre carte professionnelle.</b>";
+	MSG_INTRANET = "Vous devez vous inscrire à l'Humathèque Condorcet en passant par <b>l'intranet de votre établissement</b>. Une fois cela fait, vous pourrez retirer votre badge d'accès à <b>l'accueil de l'Humathèque Condorcet.</b>";
+  	MSG_JUSTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à <b>l'accueil de la bibliothèque</b> en vous munissant <b>d'un justificatif et de vos identifiants d'établissement.</b>";
+	MSG_REFERENT = "Vous devez demander votre inscription à <b>votre unité ou à votre référent laboratoire</b>. Votre badge sera ensuite disponible au <b>PC de Sécurité</b> du Campus Condorcet. Il vous permettra d'accéder à l'Humathèque Condorcet.";
+  	MSG_VISITEUR = "Vous pouvez faire une demande d’accès sur <b>justificatif de recherche</b>";
 });
 
 function hide_all(){
@@ -241,23 +241,30 @@ $("#acces").change(function () {
 
 // Détermination de la consigne à donner au lecteur potentiel
 function setConclusion(value, status) {
-  	$("#conclusion").text(value);
+  	//$("#conclusion").text(value);
+	msg = value;
 	switch(value){
 	 case MSG_CONTACT: 
-		$("#conclusion").append(" Vous trouverez <a href='https://www.humatheque-condorcet.fr/fr/contacts'>ici toutes les informations pour nous contacter</a>");
+		//$("#conclusion").append(" Vous trouverez <a href='https://www.humatheque-condorcet.fr/fr/contacts'>ici toutes les informations pour nous contacter</a>");
+		msg += " Vous trouverez <a href='https://www.humatheque-condorcet.fr/fr/contacts'>ici toutes les informations pour nous contacter</a>.";
 		break;
 	case MSG_ARCHIVES:
-		$("#conclusion").append(" Vous trouverez <a href='https://www.humatheque-condorcet.fr/fr/collections-et-archives/archives/contacter-le-service-des-archives'>ici toutes les informations pour nous contacter</a>");
+		//$("#conclusion").append(" Vous trouverez <a href='https://www.humatheque-condorcet.fr/fr/collections-et-archives/archives/contacter-le-service-des-archives'>ici toutes les informations pour nous contacter</a>");
+	 	msg += " Vous trouverez <a href='https://www.humatheque-condorcet.fr/fr/collections-et-archives/archives/contacter-le-service-des-archives'>ici toutes les informations pour nous contacter</a>.";
 		break;
 	case MSG_VISITEUR:
-		$("#conclusion").append(" <a href='https://www.humatheque-condorcet.fr/fr/pour-le-quotidien/sinscrire/inscription-sur-justification-de-recherches'>en remplissant le formulaire suivant</a>");
+		//$("#conclusion").append(" <a href='https://www.humatheque-condorcet.fr/fr/pour-le-quotidien/sinscrire/inscription-sur-justification-de-recherches'>en remplissant le formulaire suivant</a>");
+		msg += " <a href='https://www.humatheque-condorcet.fr/fr/pour-le-quotidien/sinscrire/inscription-sur-justification-de-recherches'>en remplissant le formulaire suivant</a>.";
 		break;
 	default:
 		break;
 	}
 
-	if (status == "show")
+	if (status == "show") {
+		$("#conclusion").html(msg);
     		$("#divconclusion").show();
-	else
+	}
+	else{
     		$("#divconclusion").hide();
+	}
 };

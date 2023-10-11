@@ -61,7 +61,7 @@ connecteurMgr::lireTemplate("haut");
        <select id="ufr">
            <option value="NIL">
            <option value="HIS">Histoire
-           <option value="GEO">Géographique
+           <option value="GEO">Géographie
            <option value="GEN">Etudes de genre
            <option value="IDU">IDUP
            <option value="AUT">Autre
@@ -115,7 +115,7 @@ connecteurMgr::lireTemplate("haut");
 </form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript" src="js/droits-lecteur.js"></script>
+<script type="text/javascript" src="js/droits-lecteur-mini.js"></script>
 
 <?php
 // Connecteur bas
