@@ -7,13 +7,13 @@ $( document ).ready(function() {
 	hide_all();
 
 	// Constantes utiles pour la suite
-	MSG_ACCUEIL = "De par votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et vous pouvez retirer votre badge d'accès à <b>l'accueil de la bibliothèque.</b>";
+	MSG_ACCUEIL = "Du fait de votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et vous pouvez retirer votre badge d'accès à <b>l'accueil de la bibliothèque.</b>";
   	MSG_ARCHIVES = "L'accès est possible : vous devez nous contacter pour prendre un rendez-vous pour consulter les archives.";
-  	MSG_BADGE_CC = "De par votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et votre badge Campus Condorcet vous sert de badge d'accès à la bibliothèque.";
+  	MSG_BADGE_CC = "Du fait de votre inscription à votre établissement, vous êtes aussi inscrit à l'Humathèque Condorcet et votre badge Campus Condorcet vous sert de badge d'accès à la bibliothèque.";
 	MSG_CERTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à <b>l'accueil de la bibliothèque</b> en vous munissant d'un <b>certificat d'étude et de vos identifiants d'établissement.</b>";
   	MSG_CONTACT = "Veuillez nous contacter pour préciser votre demande d'accès.";
 	MSG_ESPACE = "Vous pouvez accéder à <b>l'Open Space</b>, salle de travail située au rez-de-chaussée de l'Humathèque et ouverte de 08 h 00 à 20 h 00 du lundi au vendredi.";
-	MSG_ETRANGER = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à <b>l'accueil de la bibliothèque</> et en vous munissant <b>d'une carte d'étudiant ou de votre carte professionnelle.</b>";
+	MSG_ETRANGER = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à <b>l'accueil de la bibliothèque</> et en vous munissant <b>de votre carte d'étudiant ou de votre carte professionnelle.</b>";
 	MSG_INTRANET = "Vous devez vous inscrire à l'Humathèque Condorcet en passant par <b>l'intranet de votre établissement</b>. Une fois cela fait, vous pourrez retirer votre badge d'accès à <b>l'accueil de l'Humathèque Condorcet.</b>";
   	MSG_JUSTIF = "Vous pouvez vous inscrire à l'Humathèque Condorcet en vous présentant à <b>l'accueil de la bibliothèque</b> en vous munissant <b>d'un justificatif et de vos identifiants d'établissement.</b>";
 	MSG_REFERENT = "Vous devez demander votre inscription à <b>votre unité ou à votre référent laboratoire</b>. Votre badge sera ensuite disponible au <b>PC de Sécurité</b> du Campus Condorcet. Il vous permettra d'accéder à l'Humathèque Condorcet.";
@@ -35,6 +35,8 @@ function hide_all(){
 	$("#resident").val("NIL");
 	$("#divbadge").hide();
 	$("#badge").val("NIL");
+	$("#divetablissement_chercheur").hide();
+	$("#etablissement_chercheur").val("NIL");
 	$("#divconclusion").hide();
 	$("#conclusion").text("");
 }
@@ -56,7 +58,11 @@ $("#categorie").change(function () {
 		case "MASTER":
       			$("#divetablissement_master").show();
 			break;
-		default: // tous les autres cas : doctorants, chercheurs, etc.
+		case "CHERCHEUR":
+		case "DOCTORANT":
+      			$("#divetablissement_chercheur").show();
+			break;
+		default: // tous les autres cas
       			$("#divresident").show();
 			break;
 	}
@@ -66,6 +72,7 @@ $("#resident").change(function(){
 	mon_resident = $("#resident").val();
 	setConclusion("", "hide");
 	$("#badge").val("NIL");
+	$("#etablissement_resident").val("NIL");
 	switch(mon_resident){
 		case "OUI":
 			$("#divetablissement_resident").hide();
@@ -131,6 +138,26 @@ $("#badge").change(function(){
 			break;
 	  default:
 	    		hide_all();
+	}
+});
+
+$("#etablissement_chercheur").change(function(){
+	iheal_crida = $("#etablissement_chercheur").val();
+	$("#divbadge").hide();
+	$("#badge").val("NIL");
+      	$("#divresident").hide();
+	$("#resident").val("NIL");
+	$("#etablissement_resident").val("NIL");
+	setConclusion("", "hide");
+	switch(iheal_crida){
+		case "OUI":
+			setConclusion(MSG_BADGE_CC, "show");
+	  		break;
+		case "NON":
+      			$("#divresident").show();
+			break;
+		default:
+			hide_all();
 	}
 });
 

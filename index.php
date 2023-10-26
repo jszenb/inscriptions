@@ -15,16 +15,16 @@ connecteurMgr::lireTemplate("haut");
 // Fin - Template haut connecteur K-Php
 ?>
 <p>Pour consulter sur place et/ou pour emprunter des documents, une inscription est nécessaire. 
-<p>Vous pouvez déterminer vos modalités d'inscription à l'Humathèque Condorcet en utilisant le formulaire ci-dessous.
+<p>Vous pouvez déterminer vos modalités d'inscription et d'accès à l'Humathèque Condorcet en utilisant le formulaire ci-dessous.
 
 <form action="">
   <div id="divcategorie">
     <p>Vous êtes :
        <select id="categorie">
           <option value="NIL">
-          <option value="CHERCHEUR">Chercheur
+          <option value="CHERCHEUR">Chercheur ou enseignant-chercheur
           <option value="DOCTORANT">Doctorant
-          <option value="ENSEIGNANT-CHERCHEUR">Enseignant-chercheur
+          <!-- <option value="ENSEIGNANT-CHERCHEUR">Enseignant-chercheur -->
           <option value="MASTER">Etudiant en master
           <option value="PERSONNEL-ESR">Personnel de l'enseignement supérieur
           <option value="AUTRES-PUBLICS">Autres publics
@@ -32,12 +32,20 @@ connecteurMgr::lireTemplate("haut");
   </div>
   <div id="divacces">
     <p>Vous souhaitez :
-			 <select id="acces">
+	 <select id="acces">
           <option value="NIL">
           <option value="ARC">Accéder aux archives
           <option value="DOC">Accéder aux collections documentaires
           <option value="ESP">Accéder aux espaces de travail
           <option value="AUT">Autre cas
+       </select>
+  </div>
+  <div id="divetablissement_chercheur">
+    <p>Êtes-vous rattaché-e à l'IHEAL-CREDA de l'université Paris 3 ?
+       <select id="etablissement_chercheur">
+          <option value="NIL">
+          <option value="NON">Non
+          <option value="OUI">Oui
        </select>
   </div>
   <div id="divetablissement_master">
@@ -68,7 +76,7 @@ connecteurMgr::lireTemplate("haut");
        </select>
   </div>
   <div id="diviheal">
-    <p>Êtes-vous étudiant à l'IHEAL ?
+    <p>Êtes-vous étudiant-e à l'IHEAL ?
        <select id="iheal">
            <option value="NIL">
            <option value="OUI">Oui
@@ -76,7 +84,7 @@ connecteurMgr::lireTemplate("haut");
        </select>
   </div>
   <div id="divresident">
-    <p>Êtes-vous résident au Campus Condorcet ?
+    <p>Êtes-vous résident-e au Campus Condorcet ?
        <select id="resident">
            <option value="OUI">Oui
            <option value="NON">Non

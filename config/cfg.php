@@ -1,7 +1,7 @@
 <?php
 
 // chemins vers kphplib
-define("KPHPLIB_PATH", "/var/www/droits-lecteur/kphplib5/");
+define("KPHPLIB_PATH", "/var/www/inscriptions/kphplib5/");
 // chemins des librairies
 define("KPHPLIB_PATH_CLASSE",           KPHPLIB_PATH."classe/");
 define("KPHPLIB_PATH_CLASSE_DATA",      KPHPLIB_PATH."classe/data/");

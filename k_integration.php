@@ -27,7 +27,7 @@
 	$objRequete->addEncadreRecherche($objEncadreRecherche);	
 	 */
 
-	$objDonneesSpecifiques = new donnesSpecifiques("TITLE", "Catégorie du lecteur");
+	$objDonneesSpecifiques = new donnesSpecifiques("TITLE", "Inscription et accès à l'Humathèque Condorcet");
 	$objRequete->addDonneesSpecifiques($objDonneesSpecifiques);
 
 	//$includeHead = "<script type=\"text/javascript\" src=\"./js/fonctions.js\"></script>\r\n";
