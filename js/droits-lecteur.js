@@ -148,6 +148,7 @@ $("#etablissement_chercheur").change(function(){
       	$("#divresident").hide();
 	$("#resident").val("NIL");
 	$("#etablissement_resident").val("NIL");
+	$("#divetablissement_resident").hide();
 	setConclusion("", "hide");
 	switch(iheal_crida){
 		case "OUI":
